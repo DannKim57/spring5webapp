@@ -2,6 +2,7 @@ package guru.springframework.spring5webapp.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import guru.springframework.spring5webapp.domain.Author;
 import guru.springframework.spring5webapp.domain.Book;
@@ -23,7 +24,7 @@ public class BootStrapData implements CommandLineRunner{
         this.publisherRepository = publisherRepository;
     }
 
-
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
         Publisher publisher = new Publisher();
