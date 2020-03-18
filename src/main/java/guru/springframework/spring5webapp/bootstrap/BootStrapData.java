@@ -11,7 +11,7 @@ import guru.springframework.spring5webapp.repositories.AuthorRepository;
 import guru.springframework.spring5webapp.repositories.BookRepository;
 import guru.springframework.spring5webapp.repositories.PublisherRepository;
 
-
+// updated by Dan
 @Component
 public class BootStrapData implements CommandLineRunner{
     private final BookRepository bookRepository;
