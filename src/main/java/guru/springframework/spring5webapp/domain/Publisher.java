@@ -7,47 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Author {
-
+public class Publisher {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy =GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
-
-    @ManyToMany(mappedBy = "authors")
+    private String name;
+    private String address;
+    @OneToMany
+    @JoinColumn(name = "publisher_ID")
     private Set<Book> books = new HashSet<>();
-
-
-    // I didn't create no-arg constructor.
-    
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        
-    }
-
-    
-    
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public Set<Book> getBooks() {
         return books;
@@ -56,13 +29,29 @@ public class Author {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
-
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -81,7 +70,7 @@ public class Author {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Author other = (Author) obj;
+        Publisher other = (Publisher) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -92,10 +81,10 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author [books=" + books + ", firstName=" + firstName + ", id=" + id + ", lastName=" + lastName + "]";
+        return "Publisher [address=" + address + ", id=" + id + ", name=" + name + "]";
     }
 
     
-    
 
-} 
+    
+}
