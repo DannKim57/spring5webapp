@@ -21,7 +21,7 @@ public class Publisher {
     private String zip;
 
     @OneToMany
-    @JoinColumn(name = "publisher_id")
+    // @JoinColumn(name = "publisher_id") 
     private Set<Book> books = new HashSet<>();
 
     public Publisher() {
@@ -110,3 +110,17 @@ public class Publisher {
         this.zip = zip;
     }
 }
+
+/*
+@OneToMany
+// @JoinColumn(name = "publisher_id") 
+private Set<Book> books = new HashSet<>();
+
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
+Unique index or primary key violation: "PUBLIC.PRIMARY_KEY_C ON PUBLIC.PUBLISHER_BOOKS(PUBLISHER_ID, BOOKS_ID) VALUES 1"; SQL statement:
+
+@OneToMany private Set<Book> books indicates that publisher's id is going to be foreign Key. 
+As a result, Book table has a joined column called "publisher_id".
+Also, think about that none table can have set :)
+
+*/
